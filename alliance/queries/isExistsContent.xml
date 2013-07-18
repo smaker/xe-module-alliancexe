@@ -1,0 +1,11 @@
+<query id="isExistsContent" action="select">
+	<tables>
+		<table name="alliance_contents" />
+	</tables>
+	<columns>
+		<column name="count(*)" alias="count" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="content_id" var="content_id" notnull="notnull" />
+	</conditions>
+</query>

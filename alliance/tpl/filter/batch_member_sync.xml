@@ -1,0 +1,12 @@
+<filter name="batch_member_sync" module="alliance" act="procAllianceAdminBatchMemberSync" confirm_msg_code="confirm_batch_member_sync">
+	<form>
+		<node target="type" required="true" />
+	</form>
+	<parameter>
+		<param name="type" target="type" />
+	</parameter>
+	<response callback_func="completeMemberSync">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

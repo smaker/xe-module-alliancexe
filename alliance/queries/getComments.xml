@@ -1,0 +1,29 @@
+<query id="getComments" action="select">
+	<tables>
+		<table name="alliance_contents" alias="a" />
+		<table name="comments" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="b.document_srl" default="a.target_srl" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="b.document_srl" />
+		<column name="b.comment_srl" />
+		<column name="b.user_name" />
+		<column name="b.nick_name" />
+		<column name="b.content" />
+		<column name="b.voted_count" />
+		<column name="b.blamed_count" />
+		<column name="b.regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="is_secret" default="N" pipe="and" />
+		<condition operation="equal" column="a.content_id" var="content_id" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="list_order" default="b.voted_count" order="order_type" />
+		<index var="list_order2" default="b.list_order" order="order_type2" />
+		<list_count var="list_count" default="5" />
+	</navigation>
+</query>

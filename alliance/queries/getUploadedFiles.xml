@@ -1,0 +1,17 @@
+<query id="getDploadedFiles" action="select">
+	<tables>
+		<table name="files" />
+	</tables>
+	<columns>
+		<column name="file_srl" />
+		<column name="upload_target_type" />
+		<column name="sid" />
+		<column name="direct_download" />
+		<column name="module_srl" />
+		<column name="source_filename" />
+		<column name="uploaded_filename" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="upload_target_srl" var="document_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

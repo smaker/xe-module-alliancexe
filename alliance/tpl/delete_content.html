@@ -1,0 +1,21 @@
+<!--#include("_header.html")-->
+<!--%import("./filter/delete_content.xml")-->
+
+<h4 class="xeAdmin">{$lang->cmd_delete_content}</h4>
+<form action="./" method="post" onsubmit="return procFilter(this, delete_content);">
+<table cellspacing="0" class="rowTable clear">
+<input type="hidden" name="content_id" value="{$content_info->content_id}" />
+<tr>
+	<th>{$lang->title}</th>
+	<td>{htmlspecialchars($content_info->title)}</td>
+</tr>
+<tr>
+	<th>{$lang->regdate}</th>
+	<td>{zdate($content_info->regdate)}</td>
+</tr>
+</table>
+
+<p>{$lang->about_delete_content}</p>
+
+<span class="button red strong"><input type="submit" value="{$lang->cmd_delete}" /></span>
+</form>

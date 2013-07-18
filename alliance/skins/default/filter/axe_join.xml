@@ -1,0 +1,14 @@
+<filter name="axe_join" module="alliance" act="procAllianceJoin">
+	<form>
+		<node target="user_id" required="true" />
+		<node target="password" required="true" filter="password" />
+	</form>
+	<parameter>
+		<param name="user_id" target="user_id" />
+		<param name="password" target="password" />
+	</parameter>
+	<response callback_func="completeAxeAuth">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

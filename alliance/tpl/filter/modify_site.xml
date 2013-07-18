@@ -1,0 +1,16 @@
+<filter name="modify_site" module="alliance" act="procAllianceAdminModifySite" confirm_msg_code="confirm_submit">
+	<form>
+		<node target="site_srl" filter="number" required="true" />
+		<node target="title" required="true" />
+	</form>
+	<parameter>
+		<param name="site_srl" target="site_srl" />
+		<param name="title" target="title" />
+		<param name="redirect_act" target="redirect_act" />
+	</parameter>
+	<response callback_func="completeModifySite">
+		<tag name="error" />
+		<tag name="message" />
+		<tag name="redirect_act" />
+	</response>
+</filter>

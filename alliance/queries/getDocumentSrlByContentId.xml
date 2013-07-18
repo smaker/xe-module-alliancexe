@@ -1,0 +1,11 @@
+<query id="getDocumentSrlByContentId" action="select">
+	<tables>
+		<table name="alliance_contents" />
+	</tables>
+	<columns>
+		<column name="target_srl" alias="document_srl" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="content_id" var="content_id" notnull="notnull" />
+	</conditions>
+</query>

@@ -1,0 +1,33 @@
+<!--#include("./common_header.html")-->
+
+<!--%import("./filter/axe_join.xml")-->
+
+<form method="post" onsubmit="return procFilter(this, axe_join)">
+<input type="hidden" name="site_srl" value="{$site_srl}" />
+<table cellspacing="0" class="crossTable tCenter">
+<thead>
+<tr>
+	<th colspan="2"><div><strong>{$lang->cmd_join}</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<th class="tCenter"><div>{$lang->target_site}</div></th>
+	<td>{$site_info->title} ({$site_info->domain})</td>
+</tr>
+<tr>
+	<td>{$lang->user_id}</td>
+	<td><input type="text" name="user_id" value="" class="inputTypeText" /></td>
+</tr>
+<tr>
+	<td>{$lang->password}</td>
+	<td><input type="password" name="password" value="" class="inputTypeText" /></td>
+</tr>
+<tr>
+	<td colspan="2"><span class="button green strong"><input type="submit" value="{$lang->cmd_join}" /></span> <a href="{getUrl('act', 'dispAllianceManageSync', 'site_srl', '')}" class="button black"><span>{$lang->cmd_back}</span></a></td>
+</tr>
+</tbody>
+</table>
+</form>
+
+<!--#include("./common_footer.html")-->

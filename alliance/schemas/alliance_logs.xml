@@ -1,0 +1,6 @@
+<table name="alliance_logs">
+	<column name="log_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="type" type="char" size="20" notnull="notnull" />
+	<column name="content" type="text" />
+	<column name="regdate" type="date" />
+</table>

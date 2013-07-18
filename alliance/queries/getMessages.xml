@@ -1,0 +1,29 @@
+<query id="getMessages" action="select">
+	<tables>
+		<table name="alliance_messages" alias="a" />
+		<table name="alliance_sites" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="a.domain" default="b.domain" notnull="notnull" pipe="and" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="a.message_srl" />
+		<column name="a.domain" />
+		<column name="a.type" />
+		<column name="a.is_readed" />
+		<column name="a.content" />
+		<column name="a.regdate" />
+		<column name="b.title" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="a.type" var="type" />
+		<condition operation="like" column="a.content" var="s_content" pipe="and" />
+		<condition operation="like" column="a.domain" var="s_domain" pipe="and" />
+		<condition operation="equal" column="a.content" var="e_content" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="a.message_srl" order="order_type" />
+		<list_count var="list_count" default="20" />
+	</navigation>
+</query>

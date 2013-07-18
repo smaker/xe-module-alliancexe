@@ -1,0 +1,8 @@
+<filter name="alliance_breakup" module="alliance" act="procAllianceAdminBreakup" confirm_msg_code="confirm_breakup">
+	<form />
+	<parameter />
+	<response callback_func="completeBreakup">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

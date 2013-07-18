@@ -1,0 +1,11 @@
+<query id="insertMember" action="insert">
+	<tables>
+		<table name="alliance_members" />
+	</tables>
+	<columns>
+		<column name="site_srl" var="site_srl" filter="number" notnull="notnull" />
+		<column name="target_srl" var="target_srl" filter="number" notnull="notnull" />
+		<column name="member_id" var="member_id" notnull="notnull" />
+		<column name="regdate" var="regdate" notnull="notnull" />
+	</columns>
+</query>

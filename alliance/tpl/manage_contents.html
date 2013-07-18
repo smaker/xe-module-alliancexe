@@ -1,0 +1,62 @@
+<!--#include("_header.html")-->
+
+<!--%import("filter/batch_content_sync.xml")-->
+<form class="section" onsubmit="return procFilter(this, batch_content_sync)">
+	<span class="button strong"><input type="submit" value="{$lang->cmd_alliancexe_batch_content_sync}" /></span>
+	<p>{$lang->about_alliancexe_batch_content_sync}</p>
+</form>
+
+<!--@if($order_type == 'desc')-->
+	{@ $order_icon = "buttonDescending.gif" }
+	{@ $order_type = "asc"; }
+<!--@else-->
+	{@ $order_icon = "buttonAscending.gif" }
+	{@ $order_type = "desc"; }
+<!--@end-->
+
+<table cellspacing="0" class="crossTable clear">
+<caption>Total {$total_count}, Page {$page}/{$total_page}</caption>
+<thead>
+<tr class="tCenter">
+	<th scope="col"><div>{$lang->category}</div></th>
+	<th scope="col"><div>{$lang->target_site}</div></th>
+	<th scope="col"><div>{$lang->title}</div></th>
+	<th scope="col"><div><!--@if($sort_index=='comment_count')--><img src="./img/{$order_icon}" alt="sort" width="5" height="3" class="sort" /><!--@end--><a href="{getUrl('sort_index','comment_count','order_type',$order_type)}">{$lang->comment}</a></div></th>
+	<th scope="col"><div><!--@if($sort_index=='readed_count')--><img src="./img/{$order_icon}" alt="sort" width="5" height="3" class="sort" /><!--@end--><a href="{getUrl('sort_index','readed_count','order_type',$order_type)}">{$lang->readed_count}</a></div></th>
+	<th scope="col"><div><!--@if($sort_index=='voted_count')--><img src="./img/{$order_icon}" alt="sort" width="5" height="3" class="sort" /><!--@end--><a href="{getUrl('sort_index','voted_count','order_type',$order_type)}">{$lang->voted_count}</a></div></th>
+	<th scope="col"><div><!--@if($sort_index=='list_order')--><img src="./img/{$order_icon}" alt="sort" width="5" height="3" class="sort" /><!--@end--><a href="{getUrl('sort_index','list_order','order_type',$order_type)}">{$lang->date}</a></div></th>
+	<th scope="col"><div>&nbsp;</div></th>
+</tr>
+</thead>
+<tbody>
+<!--@if(count($contents_list))-->
+<tr loop="$contents_list => $no, $val">
+	<td class="tCenter"><strong>[<!--@if($val->site_srl > 0)-->{$lang->is_received}<!--@else-->{$lang->is_sent}<!--@end-->]</strong></td>
+	<td class="tCenter"><span title="{htmlspecialchars($site[$val->site_srl]->title)} ({htmlspecialchars($site[$val->site_srl]->domain)})">{htmlspecialchars($site[$val->site_srl]->title)}</span></td>
+	<td><a href="{getUrl('', 'document_srl', $val->document_srl)}" onclick="winopen(this.href); return false;">{cut_str($val->title, 50)}</a></td>
+	<td class="tCenter">{number_format($val->comment_count)}</td>
+	<td class="tCenter">{number_format($val->readed_count)}</td>
+	<td class="tCenter">{number_format($val->voted_count)}</td>
+	<td class="tCenter">{zdate($val->regdate)}</td>
+	<td class="tCenter"><a href="{getUrl('act', 'dispAllianceAdminCancleContentSync', 'content_srl', $val->document_srl)}" class="buttonSet buttonDisable" title="{$lang->cmd_delete_content_myself}"><span>{$lang->cmd_delete_content_myself}</span></a> <a href="{getUrl('act', 'dispAllianceAdminDeleteContent', 'content_srl', $val->document_srl)}" class="buttonSet buttonDelete" title="{$lang->cmd_delete_content}"><span>{$lang->cmd_delete_content}</span></a></td>
+</tr>
+<!--@else-->
+<tr class="allianceMessage">
+	<td class="tCenter" colspan="6">{$lang->msg_no_alliance_contents}</td>
+</tr>
+<!--@end-->
+</tbody>
+</table>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+	<a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd">{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<strong>{$page_no}</strong> 
+		<!--@else-->
+			<a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd">{$lang->last_page}</a>
+</div>

@@ -1,0 +1,5 @@
+<query id="deleteAllianceInfo" action="delete">
+	<tables>
+		<table name="alliance_info" />
+	</tables>
+</query>

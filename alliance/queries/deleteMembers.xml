@@ -1,0 +1,8 @@
+<query id="deleteMembers" action="delete">
+	<tables>
+		<table name="alliance_members" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="target_srl" var="member_srl" notnull="notnull" filter="number" />
+	</conditions>
+</query>

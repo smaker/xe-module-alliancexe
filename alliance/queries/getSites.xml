@@ -1,0 +1,21 @@
+<query id="getSites" action="select">
+	<tables>
+		<table name="alliance_sites" />
+	</tables>
+	<columns>
+		<column name="site_srl" />
+		<column name="domain" />
+		<column name="type" />
+		<column name="title" />
+		<column name="status" />
+		<column name="list_order" />
+		<column name="last_update" />
+		<column name="regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="status" var="s_status" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="list_order" order="order_type" />
+	</navigation>
+</query>

@@ -1,0 +1,16 @@
+<query id="chkMember" action="select">
+	<tables>
+		<table name="member" />
+	</tables>
+	<columns>
+		<column name="count(*)" alias="count" />
+		<column name="is_admin" alias="is_admin" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="user_id" var="user_id" notnull="notnull" />
+		<condition operation="equal" column="password" var="password" notnull="notnull" pipe="and" />
+	</conditions>
+	<groups>
+		<group column="member_srl" />
+	</groups>
+</query>

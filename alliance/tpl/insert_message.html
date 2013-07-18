@@ -1,0 +1,17 @@
+<!--#include("_header.html")-->
+<!--%import("./filter/insert_message.xml")-->
+
+<form action="./" method="post" onsubmit="return procFilter(this, insert_message);">
+<table cellspacing="0" class="rowTable clear">
+<tr>
+	<th>{$lang->title}</th>
+	<td><input type="text" name="title" value="" maxlength="250" class="inputTypeText w400" /></td>
+</tr>
+<tr>
+	<th scope="col"><div>{$lang->content}</div></th>
+	<td><textarea name="content" cols="40" rows="5" class="inputTypeTextArea fullWidth"></textarea></td>
+</tr>
+</table>
+
+<span class="button black strong"><input type="submit" value="{$lang->cmd_send_alliance_message}" accesskey="s" /></span>
+</form>

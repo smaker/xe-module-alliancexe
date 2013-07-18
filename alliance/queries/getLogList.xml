@@ -1,0 +1,18 @@
+<query id="getLogList" action="select">
+	<tables>
+		<table name="alliance_logs" />
+	</tables>
+	<columns>
+		<column name="log_srl" />
+		<column name="type" />
+		<column name="content" />
+		<column name="regdate" />
+		<column name="regdate" />
+	</columns>
+	<conditions />
+	<navigation>
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

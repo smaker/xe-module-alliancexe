@@ -1,0 +1,5 @@
+<query id="deleteAllMembers" action="delete">
+	<tables>
+		<table name="alliance_members" />
+	</tables>
+</query>

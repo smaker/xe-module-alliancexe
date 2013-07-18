@@ -1,0 +1,33 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+<response>
+	<error>{$error}</error>
+	<message>{$message}</message>
+	<!--@if($alliance_info)-->
+	<alliance_info>
+		<title><![CDATA[{$alliance_info->title}]]></title>
+		<count>{$alliance_info->count}</count>
+		<!--@if($site_list)-->
+		<site_list>
+		<!--@foreach($site_list as $key => $val)-->
+			<site title="{$val->title}" domain="{$val->domain}" />
+		<!--@end-->
+		</site_list>
+		<!--@end-->
+	</alliance_info>
+	<!--@end-->
+	<!--@if($comments)-->
+	<comments>
+		<!--@foreach($comments as $key => $val)-->
+		{@ $content = cut_str(strip_tags($val->content), 30)}
+		<comment>
+			<comment_srl>{$val->comment_srl}</comment_srl>
+			<author>{$val->nick_name}</author>
+			<content><![CDATA[{$content}]]></content>
+			<voted_count>{$val->voted_count ? $val->voted_count : 0}</voted_count>
+			<blamed_count>{$val->blamed_count ? $val->blamed_count : 0}</blamed_count>
+			<regdate>{$val->regdate}</regdate>
+		</comment>
+		<!--@end-->
+	</comments>
+	<!--@end-->
+</response>

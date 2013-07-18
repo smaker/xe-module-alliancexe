@@ -1,0 +1,8 @@
+#allianceModule h3 {border-bottom:2px solid #333; color:#ccc;}
+#allianceModule h4 span.vr {color:#AAA;}
+
+#allianceModule .crossTable {border-color:#333;}
+#allianceModule .crossTable thead th {background:#333 url(../img/black/lineVrText.gif); border-top-color:#888; border-bottom-color:#666; color:#ccc;}
+#allianceModule .crossTable tbody td {color:#ccc;}
+#allianceModule .crossTable tbody th {border-bottom-color:#333; color:#ccc;}
+#allianceModule .crossTable td {border-bottom-color:#333;}

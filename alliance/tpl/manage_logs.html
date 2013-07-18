@@ -1,0 +1,39 @@
+<!--#include("_header.html")-->
+
+<table cellspacing="0" class="crossTable clear">
+<caption>Total {$total_count}, Page {$page}/{$total_page}</caption>
+<thead>
+<tr>
+	<th scope="col"><div>{$lang->no}</div></th>
+	<th scope="col"><div>Type</div></th>
+	<th scope="col"><div>{$lang->content}</div></th>
+	<th scope="col"><div>{$lang->regdate}</div></th>
+</tr>
+</thead>
+<tbody>
+<block cond="count($log_list)">
+<tr loop="$log_list => $no, $val">
+	<td>{$no}</td>
+	<td>{$val->type}</td>
+	<td>{$val->content}</td>
+	<td>{zdate($val->regdate)}</td>
+</tr>
+</block>
+<tr class="allianceMessage" cond="count($log_list) < 1">
+	<td class="tCenter" colspan="4">로그가 없습니다.</td>
+</tr>
+</tbody>
+</table>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+	<a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd">{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<strong>{$page_no}</strong> 
+		<!--@else-->
+			<a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd">{$lang->last_page}</a>
+</div>

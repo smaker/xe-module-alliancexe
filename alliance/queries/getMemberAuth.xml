@@ -1,0 +1,16 @@
+<query id="getMemberAuth" action="select">
+	<tables>
+		<table name="alliance_member_auth" />
+	</tables>
+	<columns>
+		<column name="member_srl" var="member_srl" />
+		<column name="site_srl" var="site_srl" />
+		<column name="authkey" var="authkey" />
+		<column name="user_id" var="user_id" />
+		<column name="auth_date" var="auth_date" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" filter="number" notnull="notnull" />
+		<condition operation="equal" column="site_srl" var="site_srl" filter="number" notnull="notnull" pipe="and" />
+	</conditions>
+</query>

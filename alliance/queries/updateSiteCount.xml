@@ -1,0 +1,8 @@
+<query id="updateSiteCount" action="update">
+	<tables>
+		<table name="alliance_info" />
+	</tables>
+	<columns>
+		<column name="count" var="count" notnull="notnull" />
+	</columns>
+</query>

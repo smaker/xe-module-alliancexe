@@ -1,0 +1,12 @@
+<filter name="alliance_accept" module="alliance" act="procAllianceAdminAccept" confirm_msg_code="confirm_accept">
+	<form>
+		<node target="domain" maxlength="250" required="true" />
+	</form>
+	<parameter>
+		<param name="domain" target="domain" />
+	</parameter>
+	<response callback_func="completeSiteCommand">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

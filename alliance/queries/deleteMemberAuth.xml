@@ -1,0 +1,9 @@
+<query id="deleteMemberAuth" action="delete">
+	<tables>
+		<table name="alliance_member_auth" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="site_srl" var="site_srl" notnull="notnull" filter="number" />
+		<condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" filter="number" pipe="and"/>
+	</conditions>
+</query>

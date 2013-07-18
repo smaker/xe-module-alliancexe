@@ -1,0 +1,52 @@
+<!--#include("_header.html")-->
+
+<!--%import("filter/batch_member_sync.xml")-->
+<form class="section" onsubmit="return procFilter(this, batch_member_sync)">
+	<span class="button strong"><input type="submit" value="{$lang->cmd_alliancexe_batch_member_sync}" /></span>
+	<p>{$lang->about_alliancexe_batch_member_sync}</p>
+</form>
+
+<table cellspacing="0" class="crossTable clear">
+<caption>Total {$total_count}, Page {$page}/{$total_page}</caption>
+<thead>
+<tr class="tCenter">
+	<th scope="col"><div>{$lang->category}</div></th>
+	<th scope="col"><div>{$lang->user_id}</div></th>
+	<th scope="col"><div>{$lang->user_name}</div></th>
+	<th scope="col"><div>{$lang->nick_name}</div></th>
+	<th scope="col"><div>{$lang->date}</div></th>
+	<th scope="col"><div>&nbsp;</div></th>
+</tr>
+</thead>
+<tbody>
+<!--@if(count($member_list))-->
+<!--@foreach($member_list as $no => $val)-->
+<tr>
+	<td class="tCenter"><strong>[<!--@if($val->site_srl > 0)-->{$lang->is_received}<!--@else-->{$lang->is_sent}<!--@end-->]</strong></td>
+	<td>{$val->user_id}</td>
+	<td>{$val->user_name}</td>
+	<td>{$val->nick_name}</td>
+	<td class="tCenter">{zdate($val->regdate)}</td>
+	<td class="tCenter">&nbsp;</td>
+</tr>
+<!--@end-->
+<!--@else-->
+<tr class="allianceMessage">
+	<td class="tCenter" colspan="6">{$lang->msg_no_alliance_members}</td>
+</tr>
+<!--@end-->
+</tbody>
+</table>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+	<a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd">{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<strong>{$page_no}</strong> 
+		<!--@else-->
+			<a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd">{$lang->last_page}</a>
+</div>

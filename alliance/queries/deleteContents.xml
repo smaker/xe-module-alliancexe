@@ -1,0 +1,8 @@
+<query id="deleteContents" action="delete">
+	<tables>
+		<table name="alliance_contents" />
+	</tables>
+	<conditions>
+		<condition operation="in" column="target_srl" var="document_srls" notnull="notnull" />
+	</conditions>
+</query>

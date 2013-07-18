@@ -1,0 +1,5 @@
+<table name="alliance_info">
+	<column name="parent_domain" type="varchar" size="255" notnull="notnull" />
+	<column name="title" type="varchar" size="255" notnull="notnull" />
+	<column name="join_date" type="date" />
+</table>

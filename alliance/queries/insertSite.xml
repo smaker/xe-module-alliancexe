@@ -1,0 +1,14 @@
+<query id="insertSite" action="insert">
+	<tables>
+		<table name="alliance_sites" />
+	</tables>
+	<columns>
+		<column name="site_srl" var="site_srl" notnull="notnull" />
+		<column name="domain" var="domain" notnull="notnull" />
+		<column name="type" var="type" notnull="notnull" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="status" var="status" notnull="notnull" default="waiting" />
+		<column name="list_order" var="list_order" notnull="notnull" />
+		<column name="regdate" var="regdate" notnull="notnull" default="curdate()" />
+	</columns>
+</query>

@@ -1,0 +1,10 @@
+<filter name="alliance_create" module="alliance" act="procAllianceAdminCreate">
+	<form>
+		<node target="alliance_title" minlength="4" maxlength="20" required="true" />
+	</form>
+	<parameter />
+	<response callback_func="completeCreate">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

@@ -1,0 +1,22 @@
+<query id="getContentInfo" action="select">
+	<tables>
+		<table name="documents" alias="a" />
+		<table name="alliance_contents" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="b.target_srl" default="a.document_srl" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="b.content_id" />
+		<column name="a.document_srl" />
+		<column name="a.title" />
+		<column name="a.regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="a.document_srl" var="document_srl" notnull="notnull" filter="number" />
+	</conditions>
+	<groups>
+		<group column="a.document_srl" />
+	</groups>
+</query>

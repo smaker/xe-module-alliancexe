@@ -1,0 +1,47 @@
+<!--%import("css/alliancexe.min.css")-->
+<!--%import("js/alliance_admin.min.js")-->
+
+<h3 class="xeAdmin"><span class="gray">allianceXE {$lang->cmd_management}</span></h3>
+<div class="infoText">
+	{$lang->about_alliancexe}
+</div>
+
+<ul class="localNavigation">
+	<li<!--@if($act =='dispAllianceAdminContent')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminContent')}">{$lang->index_page}</a></li>
+	<li<!--@if($act == 'dispAllianceAdminInfo')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminInfo')}">{$lang->cmd_view_alliance_info}</a></li>
+	<!--@if($grant->_manager)--><li<!--@if($act == 'dispAllianceAdminSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSetup')}">{$lang->cmd_alliance_setup}</a></li><!--@end-->
+	<!--@if(!$grant->_create)--><li<!--@if($act == 'dispAllianceAdminSyncSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSyncSetup')}">{$lang->cmd_alliance_sync_setup}</a></li><!--@end-->
+	<!--@if(!$grant->_create)--><li<!--@if($act == 'dispAllianceAdminSkinSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSkinSetup')}">{$lang->cmd_alliance_skin_setup}</a></li><!--@end-->
+	<li<!--@if(in_array($act, $m_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages')}">{$lang->cmd_manage_alliance_messages}</a>
+		<ul>
+			<li<!--@if($act == 'dispAllianceAdminManageMessages' && $iType == 'R')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages', 'iType', 'R')}">{$lang->received_message}</a>
+			</li>
+			<li<!--@if($act == 'dispAllianceAdminManageMessages' && $iType == 'S')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages', 'iType', 'S')}">{$lang->sent_message}</a></li>
+		</ul>
+	</li>
+	<li<!--@if(in_array($act, $s_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageSites')}">{$lang->cmd_manage_alliance_sites}</a>
+	<!--@if(!$grant->_create && $grant->_manager)-->
+		<ul>
+			<li<!--@if($act == 'dispAllianceAdminManageSites' && $iType == 'C')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageSites', 'iType', 'C')}">{$lang->child_site}</a></li>
+			<li<!--@if($act == 'dispAllianceAdminManageSites' && $iType == 'P')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageSites', 'iType', 'P')}">{$lang->parent_site}</a></li>
+		</ul>
+	<!--@end-->
+	</li>
+	<!--@if(!$grant->_create)-->
+	<li<!--@if(in_array($act, $c_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageContents')}">{$lang->cmd_manage_contents}</a>
+		<ul>
+			<li<!--@if($act == 'dispAllianceAdminManageContents' && $iType == 'R')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageContents', 'iType', 'R')}">{$lang->is_received}</a></li>
+			<li<!--@if($act == 'dispAllianceAdminManageContents' && $iType == 'S')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageContents', 'iType', 'S')}">{$lang->is_sent}</a></li>
+
+		</ul>
+	</li>
+	<!--@end-->
+	<!--@if(!$grant->_create)-->
+	<li<!--@if(in_array($act, $u_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMember')}">{$lang->cmd_manage_members}</a>
+		<ul>
+			<li<!--@if($act == 'dispAllianceAdminManageMember')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMember')}">{$lang->member}</a></li>
+		</ul>
+	</li>
+	<!--@end-->
+	<!--//<li<!--@if(in_array($act, $l_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageLogs')">{$lang->cmd_manage_logs}</a></li>-->
+</ul>

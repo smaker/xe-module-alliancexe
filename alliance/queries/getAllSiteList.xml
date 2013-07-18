@@ -1,0 +1,22 @@
+<query id="getAllSiteList" action="select">
+	<tables>
+		<table name="alliance_sites" />
+	</tables>
+	<columns>
+		<column name="site_srl" />
+		<column name="domain" />
+		<column name="type" />
+		<column name="title" />
+		<column name="status" />
+		<column name="list_order" />
+		<column name="last_update" />
+		<column name="regdate" />
+	</columns>
+	<conditions />
+	<navigation>
+		<index var="sort_index" default="list_order" order="desc" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

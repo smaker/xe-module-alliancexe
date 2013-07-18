@@ -1,0 +1,27 @@
+<!--#include("_header.html")-->
+
+<!--@if(!$alliance_info)-->
+<h4 class="xeAdmin">{$lang->suggest_alliance}</h4>
+<p class="allianceMessage">{$lang->msg_suggest_alliance}</p>
+<a href="http://funnyxe.com/alliance_find" class="button blue strong"><span>{$lang->cmd_find_alliance}</span></a>
+<a href="{getUrl('act', 'dispAllianceAdminCreate')}" class="button green strong"><span>{$lang->cmd_make_alliance}</span></a>
+<!--@end-->
+
+<h4 class="xeAdmin">{$lang->alliance_invitation}</h4>
+
+<!--@if($invitation_count)-->
+{sprintf($lang->invitation_messages, getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages', 'iType', 'R', 'search_target', 'e_content', 'search_keyword', '#invite'), $invitation_count)}
+<!--@else-->
+<span class="allianceMessage">{$lang->not_exists_invitation_message}</span>
+<!--@end-->
+
+<h4 class="xeAdmin">{$lang->recently_alliance_message}</h4>
+<!--@if($recently_messages)-->
+<ul class="recentlyMessages" loop="$recently_messages => $key, $val">
+	<!--@foreach($recently_messages as $key => $val)-->
+	<li><strong class="siteName">[{$val->title}]</strong> <!--@if($val->content == '#invite')-->[#{$lang->invitation}]<!--@elseif($val->content == '#accept')-->[#{$lang->cmd_accept}]<!--@elseif($val->content == '#refuse')-->[#{$lang->cmd_refuse}]<!--@else-->{cut_str(htmlspecialchars($val->content), 20)}<!--@end--> <span class="date">{zdate($val->regdate)}</span></li>
+	<!--@end-->
+</ul>
+<!--@else-->
+<span class="allianceMessage">{$lang->not_exists_recently_alliance_message}</span>
+<!--@end-->

@@ -1,0 +1,5 @@
+<query id="deleteAllMessages" action="delete">
+	<tables>
+		<table name="alliance_messages" />
+	</tables>
+</query>

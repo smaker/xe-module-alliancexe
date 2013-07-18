@@ -1,0 +1,14 @@
+<filter name="insert_message" module="alliance" act="procAllianceAdminInsertMessage" confirm_msg_code="confirm_submit">
+	<form>
+		<node target="title" minlength="2" maxlength="250" required="true" />
+		<node target="content" minlength="2" maxlength="250" required="true" />
+	</form>
+	<parameter>
+		<param name="title" target="title" />
+		<param name="content" target="content" />
+	</parameter>
+	<response callback_func="completeInsertMessage">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

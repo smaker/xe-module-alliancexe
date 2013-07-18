@@ -1,0 +1,20 @@
+<!--#include("_header.html")-->
+
+<!--%import("./filter/alliance_refuse.xml")-->
+
+<h4 class="xeAdmin">{$lang->cmd_refuse}</h4>
+
+<form onsubmit="return procFilter(this, alliance_refuse)">
+<input type="hidden" name="domain" value="{$domain}" />
+	<p class="allianceMessage">
+	<strong>{$domain}</strong>
+	</p>
+	<hr class="devideLine" />
+	<span class="allianceMessage">
+	{nl2br($lang->about_refuse)}
+	</span>
+	<p>
+		<span class="button green strong"><input type="submit" value="{$lang->cmd_yes}"></span>
+		<a href="{getUrl('act', 'dispAllianceAdminManageSites')}" class="button"><span>{$lang->cmd_no}</span></a>
+	</p>
+</form>

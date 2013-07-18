@@ -1,0 +1,37 @@
+<!--#include("./common_header.html")-->
+
+<div class="infoText">
+	{$lang->about_alliancexe_sync}
+</div>
+<table cellspacing="0" class="crossTable tCenter">
+<tbody>
+<!--@foreach($site_list as $key => $val)-->
+<tr>
+	<td><strong>{htmlspecialchars($val->title)}</strong> ({$val->domain})</td>
+	<td>
+		<!--@if($auth_status[$val->site_srl])-->
+		<a href="{getUrl('act', 'dispAllianceUnauth', 'site_srl', $val->site_srl)}" class="button red"><span>{$lang->cmd_unauth}</span></a>
+		<!--@else-->
+		<a href="{getUrl('act', 'dispAllianceAuth', 'site_srl', $val->site_srl)}" class="button green"><span>{$lang->cmd_auth}</span></a>
+		<!--@end-->
+	</td>
+	<td>
+	<!--@if($join_status[$val->site_srl])-->
+		<!--@if($auth_status[$val->site_srl])-->
+		<a href="{getUrl('act', 'dispAllianceLeave', 'site_srl', $val->site_srl)}" class="button red"><span>{$lang->cmd_leave}</span></a>
+		<!--@end-->
+	<!--@else-->
+		<a href="{getUrl('act', 'dispAllianceJoin', 'site_srl', $val->site_srl)}" class="button green"><span>{$lang->cmd_join}</span></a>
+	<!--@end-->
+	</td>
+</tr>
+<!--@else-->
+<tr>
+	<td class="tCenter" colspan="3"><strong>{$lang->not_authed}</strong></td>
+</tr>
+<!--@end-->
+</tbody>
+</table>
+
+
+<!--#include("./common_footer.html")-->

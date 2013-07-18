@@ -1,0 +1,8 @@
+<query id="deleteMessage" action="delete">
+	<tables>
+		<table name="alliance_messages" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="message_srl" var="message_srl" notnull="notnull" />
+	</conditions>
+</query>

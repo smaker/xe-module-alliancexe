@@ -1,0 +1,6 @@
+<filter name="insert_skin_config" module="alliance" act="procAllianceAdminUpdateSkinInfo">
+	<form>
+		<node target="skin" required="true" />
+	</form>
+	<parameter />
+</filter>

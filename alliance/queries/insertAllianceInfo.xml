@@ -1,0 +1,10 @@
+<query id="insertAllianceInfo" action="insert">
+	<tables>
+		<table name="alliance_info" />
+	</tables>
+	<columns>
+		<column name="parent_domain" var="parent_domain" notnull="notnull" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="join_date" var="join_date" notnull="notnull" default="curdate()" />
+	</columns>
+</query>

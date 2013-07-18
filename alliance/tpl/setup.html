@@ -1,0 +1,23 @@
+<!--#include("_header.html")-->
+
+<h4 class="xeAdmin">{$lang->cmd_alliance_setup}</h4>
+
+<!--@if($grant->_manager)-->
+<!--%import("./filter/insert_config.xml")-->
+<form action="{Context::getRequestUri()}" method="post" onsubmit="return procFilter(this, insert_config)">
+<table cellspacing="0" class="rowTable">
+	<tr>
+		<th scope="row">{$lang->alliance_title}</th>
+		<td>
+			<input type="text" name="alliance_title" value="{htmlspecialchars($config->alliance_info->title)}" class="inputTypeText w400" />
+			<p>{$lang->about_alliance_title}</p>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="button"><span class="button black strong"><input type="submit" value="{$lang->cmd_save}" /></span></th>
+	</tr>
+</table>
+</form>
+<!--@else-->
+<span class="allianceMessage">{$lang->msg_not_permitted}</span>
+<!--@end-->

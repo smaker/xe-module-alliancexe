@@ -1,0 +1,12 @@
+<query id="insertMemberAuth" action="insert">
+	<tables>
+		<table name="alliance_member_auth" />
+	</tables>
+	<columns>
+		<column name="member_srl" var="member_srl" filter="number" notnull="notnull" />
+		<column name="site_srl" var="site_srl" filter="number" notnull="notnull" />
+		<column name="authkey" var="authkey" notnull="notnull" />
+		<column name="user_id" var="user_id" notnull="notnull" />
+		<column name="auth_date" var="auth_date" default="curdate()" />
+	</columns>
+</query>

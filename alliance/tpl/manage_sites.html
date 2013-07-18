@@ -1,0 +1,48 @@
+<!--#include("_header.html")-->
+
+<table cellspacing="0" class="crossTable clear tCenter">
+<caption>Total {$total_count}, Page {$page}/{$total_page}</caption>
+<thead>
+<tr>
+	<th scope="col"><div>{$lang->no}</div></th>
+	<th scope="col"><div>{$lang->status}</div></th>
+	<th scope="col"><div>{$lang->site_title}</div></th>
+	<th scope="col"><div>{$lang->regdate}</div></th>
+	<th scope="col"><div>{$lang->last_update}</div></th>
+	<th scope="col"><div>&nbsp;</div></th>
+</tr>
+</thead>
+<tbody>
+<!--@if(count($site_list))-->
+<!--@foreach($site_list as $no => $val)-->
+<tr>
+	<td>{$no}</td>
+	<td><strong class="{$val->status}">[{$lang->alliance_statues[$val->status]}]</strong></td>
+	<td><!--@if($val->title)--><strong>[{$val->title}]</strong> <!--@end-->{$val->domain}</td>
+	<td>{zdate($val->regdate)}</td>
+	<td><!--@if($val->last_update)-->{zdate($val->last_update)}<!--@else-->-<!--@end--></td>
+	<td><a href="{getUrl('act', 'dispAllianceAdminModifySite', 'redirect_act', 'dispAllianceAdminManageSites', 'site_srl', $val->site_srl)}" class="button blue small"><span>{$lang->cmd_modify}</span></a><!--@if($grant->_manager)--> <a href="{getUrl('act', 'dispAllianceAdminKick', 'site_srl', $val->site_srl)}" class="button red small"><span>{$lang->cmd_kick}</span></a><!--@end--></td>
+</tr>
+<!--@endforeach-->
+<!--@else-->
+<tr>
+	<td class="tCenter" colspan="6">{$lang->msg_no_alliance_sites}</td>
+</tr>
+<!--@end-->
+</tbody>
+</table>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+	<a href="{getUrl('page','')}" class="prevEnd">{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<strong>{$page_no}</strong> 
+		<!--@else-->
+			<a href="{getUrl('page',$page_no)}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page)}" class="nextEnd">{$lang->last_page}</a>
+</div>
+
+<!--@if(!$grant->_create && $grant->_manager)--><a href="{getUrl('act', 'dispAllianceAdminInvite')}" class="button black strong"><span>{$lang->cmd_invite_site}</span></a><!--@end-->

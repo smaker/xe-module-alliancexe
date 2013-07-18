@@ -1,0 +1,29 @@
+<query id="getMemberList" action="select">
+	<tables>
+		<table name="member" alias="a" />
+		<table name="alliance_members" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="b.target_srl" default="a.member_srl" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="a.member_srl" />
+		<column name="a.user_id" />
+		<column name="a.user_name" />
+		<column name="a.nick_name" />
+		<column name="a.regdate" />
+		<column name="b.site_srl" />
+		<column name="b.member_id" />
+	</columns>
+	<conditions>
+		<condition operation="excess" column="b.target_srl" default="0" pipe="and" />
+		<condition operation="excess" column="b.member_id" default="0" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="a.list_order" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

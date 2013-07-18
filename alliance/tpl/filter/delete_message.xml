@@ -1,0 +1,12 @@
+<filter name="delete_message" module="alliance" act="procAllianceAdminDeleteMessage" confirm_msg_code="confirm_delete">
+	<form>
+		<node target="message_srl" filter="number" required="true" />
+	</form>
+	<parameter>
+		<param name="message_srl" target="message_srl" />
+	</parameter>
+	<response callback_func="completeDeleteMessage">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

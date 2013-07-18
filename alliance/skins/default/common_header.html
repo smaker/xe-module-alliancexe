@@ -1,0 +1,21 @@
+<!--%import("../../tpl/js/alliance_service.js")-->
+<!--%import("css/alliancexe.css")-->
+
+<!--// 컬러셋에 따른 CSS 로드 -->
+{@ $colorset = $skin_info->colorset}
+<!--@if($colorset == 'white')-->
+	<!--%import("css/white.css")-->
+<!--@elseif($colorset == 'black')-->
+	<!--%import("css/black.css")-->
+<!--@end-->
+
+<div id="allianceModule">
+	<!--@if($is_logged && $logged_info->menu_list && (!$member_srl || $member_srl == $logged_info->member_srl) )-->
+	<ul class="localNavigation">
+		<!--@foreach($logged_info->menu_list as $key => $val)-->
+		<li <!--@if($key == $act)-->class="on"<!--@end-->><a href="{getUrl('act',$key)}">{Context::getLang($val)}</a></li>
+		<!--@end-->
+	</ul>
+	<!--@end-->
+
+	<h3 class="xeAdmin">{$lang->cmd_manage_alliance_sync}</h3>

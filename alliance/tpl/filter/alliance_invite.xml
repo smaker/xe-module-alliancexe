@@ -1,0 +1,14 @@
+<filter name="alliance_invite" module="alliance" act="procAllianceAdminInvite" confirm_msg_code="confirm_invite_site">
+	<form>
+		<node target="domain" maxlength="250" required="true" />
+		<node target="title" maxlength="250" required="true" />
+	</form>
+	<parameter>
+		<param name="domain" target="domain" />
+		<param name="title" target="title" />
+	</parameter>
+	<response callback_func="completeSiteCommand">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

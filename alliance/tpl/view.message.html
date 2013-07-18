@@ -1,0 +1,20 @@
+<table cellspacing="0" class="rowTable">
+	<tr>
+		<th>{$lang->source_site}</th>
+		<td><strong>[{$message_info->site_title}]</strong> {$message_info->site_domain}</td>
+	</tr>
+	<tr>
+		<th>{$lang->date}</th>
+		<td>{zdate($message_info->regdate)}</td>
+	</tr>
+	<tr>
+		<th>{$lang->title}</th>
+		<td>{htmlspecialchars($message_info->title)}</td>
+	</tr>
+	<tr>
+		<th>{$lang->content}</th>
+		<td>{$message_info->content}</td>
+	</tr>
+</table>
+
+<a href="{getUrl('message_srl', '')}" class="button"><span>{$lang->cmd_list}</span></a>

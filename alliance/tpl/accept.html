@@ -1,0 +1,20 @@
+<!--#include("_header.html")-->
+<!--%import("filter/alliance_accept.xml")-->
+
+<h4 class="xeAdmin">{$lang->invitation_accept}</h4>
+
+<form action="./" method="post" onsubmit="return procFilter(this, alliance_accept);">
+<input type="hidden" name="domain" value="{$domain}" />
+<table cellspacing="0" class="rowTable clear">
+<tr>
+	<th scope="row">{$lang->domain}</th>
+	<td>
+		<strong>{$domain}</strong>
+		<p>{$lang->about_accept}</p>
+	</td>
+</tr>
+<tr>
+	<th colspan="2" class="button"><span class="button black strong"><input type="submit" value="{$lang->cmd_accept}" /></span></th>
+</tr>
+</table>
+</form>

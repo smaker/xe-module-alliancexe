@@ -1,0 +1,24 @@
+<!--#include("_header.html")-->
+<!--%import("filter/modify_site.xml")-->
+
+<h4 class="xeAdmin">{$lang->cmd_modify_site_info}</h4>
+
+<form action="./" method="post" onsubmit="return procFilter(this, modify_site);">
+<input type="hidden" name="site_srl" value="{$site_srl}" />
+<input type="hidden" name="redirect_act" value="{htmlspecialchars($redirect_act)}" />
+<table cellspacing="0" class="rowTable clear">
+<tr>
+	<th scope="row">{$lang->domain}</th>
+	<td>
+		<strong>{$site_info->domain}</strong>
+	</td>
+</tr>
+<tr>
+	<th>{$lang->title}</th>
+	<td><input type="text" name="title" value="{htmlspecialchars($site_info->title)}" class="inputTypeText w300" /></td>
+</tr>
+<tr>
+	<th colspan="2" class="button"><span class="button black strong"><input type="submit" value="{$lang->cmd_modify}" /></span></th>
+</tr>
+</table>
+</form>

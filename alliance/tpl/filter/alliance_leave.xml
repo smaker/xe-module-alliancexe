@@ -1,0 +1,8 @@
+<filter name="alliance_leave" module="alliance" act="procAllianceAdminLeave" confirm_msg_code="confirm_a_leave">
+	<form />
+	<parameter />
+	<response callback_func="completeBreakup">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

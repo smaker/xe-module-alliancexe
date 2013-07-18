@@ -1,0 +1,4 @@
+<filter name="insert_sync_config" module="alliance" act="procAllianceAdminInsertSyncConfig">
+	<form />
+	<parameter />
+</filter>

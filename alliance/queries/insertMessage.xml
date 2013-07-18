@@ -1,0 +1,14 @@
+<query id="insertMessage" action="insert">
+	<tables>
+		<table name="alliance_messages" />
+	</tables>
+	<columns>
+		<column name="message_srl" var="message_srl" notnull="notnull" />
+		<column name="domain" var="domain" notnull="notnull" />
+		<column name="type" var="type" notnull="notnull" />
+		<column name="is_readed" var="is_readed" notnull="notnull" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="content" var="content" notnull="notnull" />
+		<column name="regdate" var="regdate" notnull="notnull" default="curdate()" />
+	</columns>
+</query>

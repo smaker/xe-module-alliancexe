@@ -1,0 +1,28 @@
+<query id="getSyncTargetContents" action="select">
+	<tables>
+		<table name="documents" alias="a" />
+		<table name="alliance_contents" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="b.target_srl" default="a.document_srl" pipe="and" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="a.document_srl" />
+		<column name="a.module_srl" />
+		<column name="a.user_id" />
+		<column name="a.password" />
+		<column name="a.user_name" />
+		<column name="a.nick_name" />
+		<column name="a.title" />
+		<column name="a.content" />
+		<column name="a.tags" />
+		<column name="a.ipaddress" />
+	</columns>
+	<conditions>
+		<condition operation="null" column="b.content_id" default="0" />
+	</conditions>
+	<navigation>
+		<list_count var="list_count" default="100" />
+	</navigation>
+</query>

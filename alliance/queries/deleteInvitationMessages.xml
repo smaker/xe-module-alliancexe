@@ -1,0 +1,9 @@
+<query id="deleteInvitationMessages" action="delete">
+	<tables>
+		<table name="alliance_messages" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="content" default="#invite" pipe="and" />
+		<condition operation="equal" column="domain" var="domain" pipe="and" />
+	</conditions>
+</query>

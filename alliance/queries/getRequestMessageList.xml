@@ -1,0 +1,23 @@
+<query id="getRequestMessageList" action="select">
+	<tables>
+		<table name="alliance_messages" />
+	</tables>
+	<columns>
+		<column name="message_srl" />
+		<column name="domain" />
+		<column name="type" />
+		<column name="is_readed" />
+		<column name="content" />
+		<column name="regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="type" var="type" pipe="and" />
+		<condition operation="equal" column="content" default="#request" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="message_srl" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

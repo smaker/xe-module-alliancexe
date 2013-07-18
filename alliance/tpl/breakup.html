@@ -1,0 +1,18 @@
+<!--#include("_header.html")-->
+
+<!--%import("./filter/alliance_breakup.xml")-->
+<h4 class="xeAdmin">{$alliance_info->title}</h4>
+
+<!--@if($grant->_manager && !$grant->_create)-->
+<form onsubmit="return procFilter(this, alliance_breakup)">
+	<span class="allianceMessage">
+	{nl2br($lang->warning_breakup)}
+	</span>
+	<p>
+		<span class="button green strong"><input type="submit" value="{$lang->cmd_yes}"></span>
+		<a href="{getUrl('act', 'dispAllianceAdminInfo')}" class="button"><span>{$lang->cmd_no}</span></a>
+	</p>
+</form>
+<!--@else-->
+<span class="allianceMessage">{$lang->msg_not_permitted}</span>
+<!--@end-->

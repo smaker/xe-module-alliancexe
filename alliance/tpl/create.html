@@ -1,0 +1,23 @@
+<!--#include("_header.html")-->
+
+<h4 class="xeAdmin">{$lang->cmd_make_alliance}</h4>
+
+<!--@if($grant->_create)-->
+<!--%import("./filter/alliance_create.xml")-->
+<form action="{Context::getRequestUri()}" method="post" onsubmit="return procFilter(this, alliance_create)">
+<table cellspacing="0" class="rowTable">
+	<tr>
+		<th scope="row">{$lang->alliance_title}</th>
+		<td>
+			<input type="text" name="alliance_title" value="{htmlspecialchars($config->alliance_info->title)}" class="inputTypeText w400" />
+			<p>{$lang->about_alliance_title}</p>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="button"><span class="button black strong"><input type="submit" value="{$lang->cmd_make}" /></span></th>
+	</tr>
+</table>
+</form>
+<!--@else-->
+<span class="allianceMessage">{$lang->msg_invalid_request}</span>
+<!--@end-->

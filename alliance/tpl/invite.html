@@ -1,0 +1,29 @@
+<!--#include("_header.html")-->
+
+<!--@if($grant->_create)-->
+	<span class="allianceMessage">{$lang->msg_cannot_invite_site}</span>
+	<p><a href="{getUrl('act', 'dispAllianceAdminCreate')}" class="button red strong"><span>{$lang->cmd_make_alliance}</span></a></p>
+<!--@else-->
+	<!--%import("filter/alliance_invite.xml")-->
+
+	<h4 class="xeAdmin">{$lang->cmd_invite_site}</h4>
+
+	<form method="post" onsubmit="return procFilter(this, alliance_invite);">
+	<table cellspacing="0" class="rowTable clear">
+	<tr>
+		<th scope="row">{$lang->domain}</th>
+		<td>
+			<input type="text" name="domain" value="{$site_info->domain}" class="inputTypeText w300" />
+			<p>{$lang->about_alliance_domain}</p>
+		</td>
+	</tr>
+	<tr>
+		<th>{$lang->title}</th>
+		<td><input type="text" name="title" value="" class="inputTypeText w300" /></td>
+	</tr>
+	<tr>
+		<th colspan="2" class="button"><span class="button black strong"><input type="submit" value="{$lang->cmd_invite}" accesskey="s" /></span></th>
+	</tr>
+	</table>
+	</form>
+<!--@end-->

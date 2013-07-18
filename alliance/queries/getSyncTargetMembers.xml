@@ -1,0 +1,24 @@
+<query id="getSyncTargetMembers" action="select">
+	<tables>
+		<table name="member" alias="a" />
+		<table name="alliance_members" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="b.target_srl" default="a.member_srl" pipe="and" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="a.member_srl" />
+		<column name="a.user_id" />
+		<column name="a.password" />
+		<column name="a.user_name" />
+		<column name="a.nick_name" />
+		<column name="a.email_address" />
+	</columns>
+	<conditions>
+		<condition operation="null" column="b.member_id" default="0" />
+	</conditions>
+	<navigation>
+		<list_count var="list_count" default="100" />
+	</navigation>
+</query>

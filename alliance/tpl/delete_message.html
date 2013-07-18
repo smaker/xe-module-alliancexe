@@ -1,0 +1,25 @@
+<!--#include("_header.html")-->
+<!--%import("./filter/delete_message.xml")-->
+
+<h4 class="xeAdmin">연합 메시지 삭제</h4>
+<form action="./" method="post" onsubmit="return procFilter(this, delete_message);">
+<table cellspacing="0" class="rowTable clear">
+<input type="hidden" name="message_srl" value="{$message_info->message_srl}" />
+<tr>
+	<th>{$lang->source_site}</th>
+	<td>{$message_info->domain}</td>
+</tr>
+<tr>
+	<th>{$lang->date}</th>
+	<td>{zdate($message_info->regdate)}</td>
+</tr>
+<tr>
+	<th>{$lang->content}</th>
+	<td>{$message_info->content}</th>
+</tr>
+</table>
+
+<p>정말 메시지를 삭제하시겠습니까?</p>
+
+<span class="button red strong"><input type="submit" value="{$lang->cmd_delete}" /></span>
+</form>

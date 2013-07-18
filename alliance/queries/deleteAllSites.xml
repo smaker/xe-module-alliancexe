@@ -1,0 +1,5 @@
+<query id="deleteAllSites" action="delete">
+	<tables>
+		<table name="alliance_sites" />
+	</tables>
+</query>

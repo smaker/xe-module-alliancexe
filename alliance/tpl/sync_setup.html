@@ -1,0 +1,77 @@
+<!--#include("_header.html")-->
+
+<h4 class="xeAdmin">{$lang->cmd_alliance_sync_setup}</h4>
+
+<!--@if($grant->_member)-->
+<!--%import("./filter/insert_sync_config.xml")-->
+<!--%import("../../widget/tpl/js/widget_admin.js")-->
+<form action="{Context::getRequestUri()}" method="post" onsubmit="return procFilter(this, insert_sync_config)">
+<input type="hidden" name="target_module_srl" id="target_module_srl" value="{$config->target_module_srl}" />
+<table cellspacing="0" class="rowTable">
+	<tr>
+		<th scope="row">{$lang->contents_sync}</th>
+		<td>
+			<input type="checkbox" name="contents_sync" id="cSync" value="Y" <!--@if($config->contents_sync == 'Y')--> checked="checked"<!--@end--> /><label for="cSync">{$lang->do_send}</label> / 
+			<input type="checkbox" name="contents_sync_r" id="cRSync" value="Y" <!--@if($config->contents_sync_r == 'Y')--> checked="checked"<!--@end--> /><label for="cRSync">{$lang->do_receive}</label>
+
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">{$lang->member_sync}</th>
+		<td>
+			<input type="checkbox" name="member_sync" id="mSync" value="Y"<!--@if($config->member_sync == 'Y')--> checked="checked"<!--@end--> /><label for="mSync">{$lang->do_send}</label> / 
+			<input type="checkbox" name="member_sync_r" id="mRSync" value="Y"<!--@if($config->member_sync_r == 'Y')--> checked="checked"<!--@end--> /><label for="mRSync">{$lang->do_receive}</label>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">{$lang->guest_sync}</th>
+		<td>
+			<input type="checkbox" name="guest_sync" id="gSync" value="Y"<!--@if($config->guest_sync == 'Y')--> checked="checked"<!--@end-->/><label for="gSync">{$lang->do_send}</label> /
+			<input type="checkbox" name="guest_sync_r" id="gRSync" value="Y"<!--@if($config->guest_sync_r == 'Y')--> checked="checked"<!--@end--> /><label for="gRSync">{$lang->do_receive}</label>
+			<p>{$lang->about_guest_sync}</p>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">{$lang->target}</th>
+		<td>
+			<select name="target">
+				<option value="include">{$lang->include_sync_target}</option>
+				<option value="exclude"<!--@if($config->target=='exclude')--> selected="selected"<!--@end-->>{$lang->exclude_sync_target}</option>
+			</select>
+
+			<select name="_target_module_srl" id="_target_module_srl" size="8" class="w200" style="display:block;margin:10px 0;"></select>
+
+			<a href="{getUrl('','module','module','act','dispModuleSelectList','id','target_module_srl')}" onclick="popopen(this.href, 'ModuleSelect');return false;" class="button blue"><span>{$lang->cmd_insert}</span></a>
+			<a href="#" onclick="midRemove('target_module_srl');return false;" class="button red"><span>{$lang->cmd_delete}</span></a>
+
+			<p>{$lang->about_alliance_sync_target}</p>
+
+			<script type="text/javascript">
+				jQuery( function() { getModuleSrlList('target_module_srl'); } );
+			</script>
+		</td>
+	</tr>
+</table>
+
+<h4 class="xeAdmin">{$lang->contents_sync}</h4>
+<table cellspacing="0" class="rowTable">
+	<tr>
+		<th scope="row">{$lang->contents_title_prefix}</th>
+		<td>
+			{$lang->when_receive} : 
+			<select name="contents_title_prefix_r">
+				<option>{$lang->notuse}</option>
+				<option value="site_title"<!--@if($config->contents_title_prefix_r=='site_title')--> selected="selected"<!--@end-->>{$lang->contents_title_prefix_opt}</option>
+				<!--<option value="custom"<!--@if($config->contents_title_prefix_r=='custom')--> selected="selected"<!--@end-->>{$lang->contents_title_prefix_opt2}</option>-->
+			</select>
+			<!--<p>{$lang->contents_title_prefix_opt2} : <input type="text" name="contents_title_prefix_custom" value="{htmlspecialchars($config->contents_title_prefix_custom)}" /></p>-->
+			<p>{$lang->about_contents_title_prefix}</p>
+		</td>
+	</tr>
+</table>
+
+<span class="button black strong"><input type="submit" value="{$lang->cmd_save}" /></span>
+</form>
+<!--@end-->
+
+<!--@if(!$grant->_member)--><span class="allianceMessage">{$lang->msg_not_permitted}</span><!--@end-->

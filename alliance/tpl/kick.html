@@ -1,0 +1,24 @@
+<!--#include("_header.html")-->
+
+<h4 class="xeAdmin">{$alliance_info->title}</h4>
+
+<!--@if($grant->_manager && !$grant->_create)-->
+<!--%import("filter/alliance_kick.xml")-->
+<form onsubmit="return procFilter(this, alliance_kick)">
+<input type="hidden" name="site_srl" value="{$site_srl}" />
+
+	<p class="allianceMessage">
+	<strong>{htmlspecialchars($site_info->title)}</strong> ({$site_info->domain})
+	</p>
+	<hr class="devideLine" />
+	<span class="allianceMessage">
+	{nl2br($lang->warning_kick)}
+	</span>
+	<p>
+		<span class="button green strong"><input type="submit" value="{$lang->cmd_yes}"></span>
+		<a href="{getUrl('act', 'dispAllianceAdminInfo')}" class="button"><span>{$lang->cmd_no}</span></a>
+	</p>
+</form>
+<!--@else-->
+<span class="allianceMessage">{$lang->msg_not_permitted}</span>
+<!--@end-->

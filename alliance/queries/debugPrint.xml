@@ -1,0 +1,11 @@
+<query id="debugPrint" action="insert">
+	<tables>
+		<table name="alliance_logs" />
+	</tables>
+	<columns>
+		<column name="log_srl" var="log_srl" notnull="notnull" />
+		<column name="type" var="type" notnull="notnull" />
+		<column name="content" var="content" notnull="notnull" />
+		<column name="regdate" var="regdate" notnull="notnull" default="curdate()" />
+	</columns>
+</query>

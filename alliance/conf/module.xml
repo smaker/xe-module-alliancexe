@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispAllianceAdminContent" type="view" standalone="true" admin_index="true" />
+		<action name="dispAllianceAdminInfo" type="view" standalone="true" />
+		<action name="dispAllianceAdminSetup" type="view" standalone="true" />
+		<action name="dispAllianceAdminSyncSetup" type="view" standalone="true" />
+		<action name="dispAllianceAdminSkinSetup" type="view" standalone="true" />
+		<action name="dispAllianceAdminCreate" type="view" standalone="true" />
+		<action name="dispAllianceAdminLeave" type="view" standalone="true" />
+		<action name="dispAllianceAdminBreakup" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminManageMessages" type="view" standalone="true" />
+		<action name="dispAllianceAdminManageSites" type="view" standalone="true" />
+		<action name="dispAllianceAdminManageContents" type="view" standalone="true" />
+		<action name="dispAllianceAdminManageMember" type="view" standalone="true" />
+		<action name="dispAllianceAdminManageLogs" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminKick" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminInsertMessage" type="view" standalone="true" />
+		<action name="dispAllianceAdminInvite" type="view" standalone="true" />
+		<action name="dispAllianceAdminAccept" type="view" standalone="true" />
+		<action name="dispAllianceAdminRefuse" type="view" standalone="true" />
+		<action name="dispAllianceAdminModifySite" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminDeleteMessage" type="view" standalone="true" />
+		<action name="dispAllianceAdminDeleteSite" type="view" standalone="true" />
+		<action name="dispAllianceAdminDeleteContent" type="view" standalone="true" />
+		<action name="dispAllianceAdminDeleteMember" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminCancleContentSync" type="view" standalone="true" />
+
+		<action name="dispAllianceAdminReplyMessage" type="view" standalone="true" />
+
+		<action name="dispAllianceManageSync" type="view" standalone="true" />
+		<action name="dispAllianceAuth" type="view" standalone="true" />
+		<action name="dispAllianceUnauth" type="view" standalone="true" />
+		<action name="dispAllianceJoin" type="view" standalone="true" />
+		<action name="dispAllianceLeave" type="view" standalone="true" />
+
+		<action name="procAllianceAdminInsertConfig" type="controller" standalone="true" />
+		<action name="procAllianceAdminInsertSyncConfig" type="controller" standalone="true" />
+		<action name="procAllianceAdminInsertMessage" type="controller" standalone="true" />
+		<action name="procAllianceAdminInvite" type="controller" standalone="true" />
+		<action name="procAllianceAdminAccept" type="controller" standalone="true" />
+		<action name="procAllianceAdminModifySite" type="controller" standalone="true" />
+		<action name="procAllianceAdminDeleteMessage" type="controller" standalone="true" />
+		<action name="procAllianceAdminDeleteMessages" type="controller" standalone="true" />
+		<action name="procAllianceAdminDeleteContent" type="controller" standalone="true" />
+		<action name="procAllianceAdminCancleContentSync" type="controller" standalone="true" />
+		<action name="procAllianceAdminUpdateSkinInfo" type="controller" standalone="true" />
+		<action name="procAllianceAdminCreate" type="controller" standalone="true" />
+		<action name="procAllianceAdminLeave" type="controller" standalone="true" />
+		<action name="procAllianceAdminKick" type="controller" standalone="true" />
+		<action name="procAllianceAdminBreakup" type="controller" standalone="true" />
+		<action name="procAllianceAdminBatchMemberSync" type="controller" standalone="true" />
+		<action name="procAllianceAdminBatchContentSync" type="controller" standalone="true" />
+
+		<action name="procAllianceAPI" type="controller" standalone="true" />
+		<action name="procAllianceAuth" type="controller" standalone="true" />
+		<action name="procAllianceUnauth" type="controller" standalone="true" />
+		<action name="procAllianceJoin" type="controller" standalone="true" />
+		<action name="procAllianceLeave" type="controller" standalone="true" />
+
+		<action name="getAllianceAPI" type="model" standalone="true" />
+	</actions>
+</module>

@@ -1,0 +1,31 @@
+<!--#include("_header.html")-->
+
+<!--@if($alliance_info)-->
+<h4 class="xeAdmin">{$alliance_info->title}</h4>
+<table cellspacing="0" class="crossTable" style="border-top:1px solid #cfcfcf;">
+	<tr>
+		<th>{$lang->parent_site}</th>
+		<td><a href="{$alliance_info->parent_domain}" onclick="winopen(this.href); return false;">{$alliance_info->parent_domain}</a></td>
+	</tr>
+	<tr>
+		<th>{$lang->alliance_member_count}</th>
+		<td>{number_format($alliance_info->count)}</td>
+	</tr>
+	<tr>
+		<th><!--@if($grant->_manager)-->{$lang->create_date}<!--@else-->{$lang->join_date}<!--@end--></th>
+		<td>{zdate($alliance_info->join_date)}</td>
+	</tr>
+</table>
+<!--@end-->
+<!--@if($grant->_create)-->
+	<h4 class="xeAdmin">{$lang->suggest_alliance}</h4>
+	<p class="allianceMessage">{$lang->msg_suggest_alliance}</p>
+	<a href="http://funnyxe.com/alliance_find" onclick="winopen(this.href); return false;" class="button blue strong"><span>{$lang->cmd_find_alliance}</span></a>
+	<a href="{getUrl('act', 'dispAllianceAdminCreate')}" class="button green strong"><span>{$lang->cmd_make_alliance}</span></a>
+<!--@else-->
+	<!--@if($grant->_manager)-->
+	<a href="{getUrl('act', 'dispAllianceAdminBreakup')}" class="button red strong"><span>{$lang->cmd_alliance_breakup}</span></a>
+	<!--@else-->
+	<a href="{getUrl('act', 'dispAllianceAdminLeave')}" class="button red strong"><span>{$lang->cmd_alliance_leave}</span></a>
+	<!--@end-->
+<!--@end-->

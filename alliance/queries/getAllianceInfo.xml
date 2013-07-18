@@ -1,0 +1,10 @@
+<query id="getAllianceInfo" action="select">
+	<tables>
+		<table name="alliance_info" />
+	</tables>
+	<columns>
+		<column name="parent_domain" />
+		<column name="title" />
+		<column name="join_date" />
+	</columns>
+</query>

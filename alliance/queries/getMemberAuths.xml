@@ -1,0 +1,20 @@
+<query id="getMemberAuths" action="select">
+	<tables>
+		<table name="alliance_sites" alias="a" />
+		<table name="alliance_member_auth" alias="b" type="left join">
+			<conditions>
+				<condition operation="equal" column="a.site_srl" default="b.site_srl" />
+			</conditions>
+		</table>
+	</tables>
+	<columns>
+		<column name="a.site_srl" alias="site_srl" />
+		<column name="a.title" alias="title"/>
+		<column name="b.authkey" alias="authkey" />
+		<column name="b.user_id" alias="user_id" />
+		<column name="b.auth_date" alias="auth_date" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="b.member_srl" var="member_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

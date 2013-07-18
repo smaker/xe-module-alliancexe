@@ -1,0 +1,9 @@
+<filter name="insert_config" module="alliance" act="procAllianceAdminInsertConfig">
+	<form>
+		<node target="alliance_title" minlength="4" maxlength="20" required="true" />
+	</form>
+	<parameter>
+		<param name="alliance_title" target="title" />
+		<param name="count" target="count" />
+	</parameter>
+</filter>

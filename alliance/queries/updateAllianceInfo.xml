@@ -1,0 +1,9 @@
+<query id="updateAllianceInfo" action="update">
+	<tables>
+		<table name="alliance_info" />
+	</tables>
+	<columns>
+		<column name="parent_domain" var="parent_domain" notnull="notnull" />
+		<column name="title" var="title" notnull="notnull" />
+	</columns>
+</query>

@@ -1,0 +1,7 @@
+<table name="alliance_member_auth">
+	<column name="member_srl" type="number" size="11" notnull="notnull" />
+	<column name="site_srl" type="number" size="11" notnull="notnull" index="idx_site_srl" unique="unique_user_id" />
+	<column name="authkey" type="varchar" size="32" notnull="notnull" unique="unique_authkey" />
+	<column name="user_id" type="varchar" size="80" notnull="notnull" unique="unique_user_id" />
+	<column name="auth_date" type="date" />
+</table>

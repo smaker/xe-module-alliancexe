@@ -1,0 +1,10 @@
+<filter name="alliance_kick" module="alliance" act="procAllianceAdminKick" confirm_msg_code="confirm_kick">
+	<form>
+		<node target="site_srl" required="true" filter="number" />
+	</form>
+	<parameter />
+	<response callback_func="completeSiteCommand">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

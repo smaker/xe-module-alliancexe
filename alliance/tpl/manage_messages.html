@@ -1,0 +1,115 @@
+<!--#include("_header.html")-->
+
+<!--@if($message_info->message_srl)-->
+<!--#include("view.message.html")-->
+<!--@end-->
+
+<form action="{Context::getRequestUri()}" method="get" class="tCenter">
+	<input type="hidden" name="module" value="admin" />
+	<input type="hidden" name="act" value="dispAllianceAdminManageMessages" />
+	<!--@if(Context::get('page'))--><input type="hidden" name="page" value="{Context::get('page')}" /><!--@end-->
+	<select name="search_target">
+		<option value="" disabled="disabled">{$lang->search_target}</option>
+		<!--@foreach($lang->__search_target_list__ as $key => $val)-->
+		<option value="{$key}"<!--@if($search_target == $key)--> selected="selected"<!--@end-->>{$val}</option>
+		<!--@end-->
+	</select>
+	<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" class="inputTypeText w150"/>
+	<span class="button blue"><input type="submit" value="{$lang->cmd_search}" /></span>
+	<a href="{getUrl('search_target', '', 'search_keyword', '')}" class="button"><span>{$lang->cmd_cancel}</span></a>
+</form>
+
+<!--%import("./filter/delete_messages.xml")-->
+
+<form method="post" onsubmit="return procFilter(this, delete_messages)">
+<table cellspacing="0" class="crossTable tCenter clear">
+<caption>Total {$total_count}, Page {$page}/{$total_page}</caption>
+<thead>
+<tr>
+	<th scope="col"><div><input type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true }); return false;" /></div></th>
+	<th scope="col"><div>{$lang->no}</div></th>
+	<th scope="col"><div>{$lang->source_site}</div></th>
+	<th scope="col"><div>{$lang->title}</div></th>
+	<th scope="col"><div>{$lang->date}</div></th>
+	<th scope="col"><div>&nbsp;</div></th>
+</tr>
+</thead>
+<tbody>
+<!--@if(count($message_list))-->
+<!--@foreach($message_list as $no => $val)-->
+<tr<!--@if($val->is_readed == 'N')--> class="notReaded"<!--@end-->>
+	<td class="tCenter"><input type="checkbox" name="cart" value="{$val->message_srl}" /></td>
+	<td>{$no}</td>
+	<td><!--@if($val->site_title)--><strong>[{$val->site_title}]</strong> <!--@end-->{$val->site_domain}</td>
+	<td>
+		<a href="{getUrl('message_srl', $val->message_srl)}">
+		<!--@if($val->content == '#invite')-->
+		<strong class="request">[#{$lang->invitation}]</strong> {$val->site_domain}
+		<!--@elseif($val->content == '#accept')-->
+		<strong class="accepted">[#{$lang->cmd_accept}]</strong> {$val->site_domain}
+		<!--@elseif($val->content == '#refuse')-->
+		<strong class="denied">[#{$lang->cmd_refuse}]</strong> {$val->site_domain}
+		<!--@else-->
+			<!--@if($val->title)-->
+			{cut_str(htmlspecialchars($val->title), 30)}
+			<!--@else-->
+			{cut_str(htmlspecialchars($val->content), 30)}
+			<!--@end-->
+		<!--@end-->
+		</a>
+	</td>
+	<td>{zdate($val->regdate)}</td>
+	<td>
+		<!--@if($iType == 'R')-->
+			<!--@if($val->content == '#invite')-->
+			<a href="{getUrl('act', 'dispAllianceAdminAccept', 'domain', $val->site_domain)}" class="button green small strong"><span>{$lang->cmd_accept}</span></a>
+			<a href="{getUrl('act', 'dispAllianceAdminRefuse', 'domain', $val->site_domain)}" class="button red small strong"><span>{$lang->cmd_refuse}</span></a>
+			<!--@else-->
+			<a href="{getUrl('act', 'dispAllianceAdminDeleteMessage', 'message_srl', $val->message_srl)}" class="buttonSet buttonDelete"><span>{$lang->cmd_delete}</span></a><!--@end-->
+		<!--@else-->
+			<a href="{getUrl('act', 'dispAllianceAdminDeleteMessage', 'message_srl', $val->message_srl)}" class="buttonSet buttonDelete"><span>{$lang->cmd_delete}</span></a>
+		<!--@end-->
+	</td>
+</tr>
+<!--@end-->
+<!--@else-->
+<tr>
+	<td class="tCenter" colspan="6"><!--@if($iType == 'R')-->{$lang->msg_no_received_alliance_messages}<!--@else-->{$lang->msg_no_sent_alliance_messages}<!--@end--></td>
+</tr>
+<!--@end-->
+<tr>
+	<th colspan="6" class="tCenter" style="text-align:center !important;"><span class="button red strong"><input type="submit" value="{$lang->cmd_delete}" /></span></th>
+</tr>
+</tbody>
+</table>
+</form>
+
+<form action="{Context::getRequestUri()}" method="get" class="tCenter">
+	<input type="hidden" name="module" value="admin" />
+	<input type="hidden" name="act" value="dispAllianceAdminManageMessages" />
+	<!--@if(Context::get('page'))--><input type="hidden" name="page" value="{Context::get('page')}" /><!--@end-->
+	<select name="search_target">
+		<option value="" disabled="disabled">{$lang->search_target}</option>
+		<!--@foreach($lang->__search_target_list__ as $key => $val)-->
+		<option value="{$key}"<!--@if($search_target == $key)--> selected="selected"<!--@end-->>{$val}</option>
+		<!--@end-->
+	</select>
+	<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" class="inputTypeText w150"/>
+	<span class="button blue"><input type="submit" value="{$lang->cmd_search}" /></span>
+	<a href="{getUrl('search_target', '', 'search_keyword', '')}" class="button"><span>{$lang->cmd_cancel}</span></a>
+</form>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+	<a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd">{$lang->first_page}</a> 
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		<!--@if($page == $page_no)-->
+			<strong>{$page_no}</strong> 
+		<!--@else-->
+			<a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a> 
+		<!--@end-->
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd">{$lang->last_page}</a>
+</div>
+
+<a href="{getUrl('act', 'dispAllianceAdminInsertMessage')}" class="button black strong"><span>{$lang->cmd_send_alliance_message}</span></a>

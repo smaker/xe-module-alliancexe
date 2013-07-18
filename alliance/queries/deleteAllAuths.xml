@@ -1,0 +1,5 @@
+<query id="deleteAllAuths" action="delete">
+	<tables>
+		<table name="alliance_member_auth" />
+	</tables>
+</query>

@@ -1,0 +1,8 @@
+<filter name="alliance_refuse" module="alliance" act="procAllianceAdminRefuse">
+	<form />
+	<parameter />
+	<response callback_func="completeSiteCommand">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>

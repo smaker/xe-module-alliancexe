@@ -1,0 +1,12 @@
+<filter name="cancle_content_sync" module="alliance" act="procAllianceAdminCancleContentSync" confirm_msg_code="confirm_delete">
+	<form>
+		<node target="content_id" required="true" />
+	</form>
+	<parameter>
+		<param name="content_id" target="content_id" />
+	</parameter>
+	<response callback_func="completeCancleContentSync">
+		<tag name="error" />
+		<tag name="message" />
+	</response>
+</filter>
