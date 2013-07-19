@@ -1,17 +1,15 @@
-<!--%import("css/alliancexe.min.css")-->
-<!--%import("js/alliance_admin.min.js")-->
+<load target="./css/alliancexe.css" />
+<load target="./js/alliance_admin.js" />
 
-<h3 class="xeAdmin"><span class="gray">allianceXE {$lang->cmd_management}</span></h3>
-<div class="infoText">
-	{$lang->about_alliancexe}
-</div>
+<h1 class="h1">allianceXE</h1>
 
-<ul class="localNavigation">
-	<li<!--@if($act =='dispAllianceAdminContent')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminContent')}">{$lang->index_page}</a></li>
-	<li<!--@if($act == 'dispAllianceAdminInfo')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminInfo')}">{$lang->cmd_view_alliance_info}</a></li>
-	<!--@if($grant->_manager)--><li<!--@if($act == 'dispAllianceAdminSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSetup')}">{$lang->cmd_alliance_setup}</a></li><!--@end-->
-	<!--@if(!$grant->_create)--><li<!--@if($act == 'dispAllianceAdminSyncSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSyncSetup')}">{$lang->cmd_alliance_sync_setup}</a></li><!--@end-->
-	<!--@if(!$grant->_create)--><li<!--@if($act == 'dispAllianceAdminSkinSetup')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSkinSetup')}">{$lang->cmd_alliance_skin_setup}</a></li><!--@end-->
+<div class="cnb">
+<ul>
+	<li class="active"|cond="$act == 'dispAllianceAdminContent'"><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminContent')}">{$lang->index_page}</a></li>
+	<li class="active"|cond="$act == 'dispAllianceAdminInfo'"><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminInfo')}">{$lang->cmd_view_alliance_info}</a></li>
+	<li class="active"|cond="$act == 'dispAllianceAdminSetup'" cond="$grant->_manager"><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSetup')}">{$lang->cmd_alliance_setup}</a></li>
+	<li class="active"|cond="$act == 'dispAllianceAdminSyncSetup'" cond="!$grant->_create"><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSyncSetup')}">{$lang->cmd_alliance_sync_setup}</a></li>
+	<li class="active"|cond="$act == 'dispAllianceAdminSkinSetup'" cond="!$grant->_create"><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminSkinSetup')}">{$lang->cmd_alliance_skin_setup}</a></li>
 	<li<!--@if(in_array($act, $m_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages')}">{$lang->cmd_manage_alliance_messages}</a>
 		<ul>
 			<li<!--@if($act == 'dispAllianceAdminManageMessages' && $iType == 'R')--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageMessages', 'iType', 'R')}">{$lang->received_message}</a>
@@ -43,5 +41,5 @@
 		</ul>
 	</li>
 	<!--@end-->
-	<!--//<li<!--@if(in_array($act, $l_act))--> class="on"<!--@end-->><a href="{getUrl('', 'module', 'admin', 'act', 'dispAllianceAdminManageLogs')">{$lang->cmd_manage_logs}</a></li>-->
 </ul>
+</div>
