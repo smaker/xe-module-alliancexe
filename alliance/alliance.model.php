@@ -113,7 +113,10 @@
 		 */
 		function getAllianceInfo() {
 			$output = executeQuery('alliance.getAllianceInfo');
-			if($output->toBool()) $output->data->count = $this->getSiteCount('accepted');
+			if($output->data)
+			{
+				$output->data->count = $this->getSiteCount('accepted');
+			}
 			return $output->data;
 		}
 
