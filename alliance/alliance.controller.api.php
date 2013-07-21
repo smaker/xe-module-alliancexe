@@ -1,18 +1,22 @@
 <?php
 /**
  * @class  allianceControllerAPI
- * @author SMaker (dowon2308@paran.com)
+ * @author 퍼니엑스이 (admin@funnyxe.com)
  * @brief  aliianceXE 모듈의 controller api class
  **/
 
-// load Service Class
-require_once _XE_PATH_.'modules/alliance/alliance.controller.service.php';
+
+if(!class_exists('allianceControllerService'))
+{
+	require _XE_PATH_.'modules/alliance/alliance.controller.service.php';
+}
 
 if (!class_exists("Services_JSON_SocialXE") && !class_exists("Services_JSON_allianceXE")){
 	require_once(_XE_PATH_.'modules/alliance/JSON.php');
 }
 
-class allianceControllerAPI extends allianceControllerService {
+class allianceControllerAPI extends allianceControllerService
+{
 
 	/**
 	 * @brief allianceXE API 처리
@@ -33,9 +37,12 @@ class allianceControllerAPI extends allianceControllerService {
 		$args = Context::getRequestVars();
 
 		// API 종류에 따른 처리
-		if(in_array($type, $this->api_methods)) {
+		if(in_array($type, $this->api_methods))
+		{
 			$output = $this->$type($args);
-		} else {
+		}
+		else
+		{
 			return new Object(-1, 'invalid_api');
 		}
 
@@ -47,10 +54,19 @@ class allianceControllerAPI extends allianceControllerService {
 
 	/**
 	 * @brief 대상 사이트에 요청을 보냄
-	 * @deprecated
 	 */
-	private function sendRequest($type, $target_domain, $params = array(), $timeout = 30) {
-		return self::_send($type, $target_domain, $params, $timeout);
+	private function sendRequest($type, $target_domain, $params = array(), $timeout = 30)
+	{
+		try
+		{
+			$result = self::_send($type, $target_domain, $params, $timeout);
+		}
+		catch(Exception $e)
+		{
+			$result = NULL;
+		}
+
+		return $result;
 	}
 
 	/**
@@ -59,7 +75,11 @@ class allianceControllerAPI extends allianceControllerService {
 	 */
 	private function _send($type, $target_domain, $params = array(), $timeout = 30)
 	{
-		if(!in_array($type, $this->api_methods)) return;
+		if(!in_array($type, $this->api_methods))
+		{
+			throw new Exception('Invalid Method');
+			return NULL;
+		}
 
 		// 기본적으로 전송되어야 할 json data
 		$params['module'] = 'alliance';
