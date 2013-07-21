@@ -364,11 +364,19 @@
 			// 가상 사이트 정보를 구함
 			$site_module_info  = Context::get('site_module_info');
 
-			// 가상 사이트이면 동기화 하지 않음
+			/**
+			 * @TODO 가상 사이트일 경우에도 동기화 가능하도록 개선
+			 */
 			if($site_module_info->site_srl > 0) return new Object();
 
+			// documentModel 객체 생성
+			$oDocumentModel = getModel('document');
+
 			// 비밀글일 경우 동기화 하지 않음
-			if($obj->is_secret == 'Y') return new Object();
+			if($obj->status != $oDocumentModel->getConfigStatus('secret')) return new Object();
+
+			// 임시 저장글일 경우 동기화 하지 않음
+			if($obj->status != $oDocumentModel->getConfigStatus('temp')) return new Object();
 
 			// 공지글일 경우 동기화 하지 않음
 			if($obj->is_notice == 'Y') return new Object();
@@ -377,7 +385,7 @@
 			if($obj->call_by_alliancexe) return new Object();
 
 			// allianceXE의 model class
-			$oAllianceModel = &getModel('alliance');
+			$oAllianceModel = getModel('alliance');
 
 			// 모듈 설정을 구함
 			$config = $oAllianceModel->getModuleConfig();
@@ -396,10 +404,10 @@
 			if(!count($site_list)) return new Object();
 
 			// 제외 모듈
-			$exclude_module = array('ad', 'attendance', 'iconshop', 'memo', 'opage', 'page');
+			$exclude_module = array('ad', 'attendance', 'iconshop', 'memo', 'opage', 'page', 'kin', 'resource', 'textyle', 'recruit', 'issuetracker', 'planet');
 
-			// module의 model class
-			$oModuleModel = &getModel('module');
+			// moduleModel 객체 생성
+			$oModuleModel = getModel('module');
 
 			// 모듈 정보를 구함
 			$module_srl = $obj->module_srl;
@@ -602,6 +610,7 @@
 
 			// 문서 정보를 암호화 (정확한 전달 및 보안을 위함)
 			if(!$obj->ipaddress) $obj->ipaddress = $_SERVER['REMOTE_ADDR'];
+			$params = array();
 			$params['md'] = $this->_encode($module_info->mid);
 			$params['tt'] = $this->_encode($obj->title);
 			$params['cc'] = $this->_encode($obj->content);
